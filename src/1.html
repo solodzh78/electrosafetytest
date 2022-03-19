@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />    
+    <title>Экзамен по электробезопасности</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/test.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/test.js"></script>
+</head>
+<body>
+    <div class="title">Экзамен по электробезопасности</div>
+    <div class="overlay js-overlay-campaign">
+        <div class="popup js-popup-campaign">
+            <h2>Вы успешно сдали экзамен.</h2>
+            <p>Количество ошибок</p> 
+            <div class="close-popup js-close-campaign"></div>
+        </div>
+    </div>
+
+    <input type="radio" name="questions" id="q1" value=1 checked="checked">
+    <input type="radio" name="questions" id="q2" value=2>
+    <input type="radio" name="questions" id="q3" value=3>
+    <input type="radio" name="questions" id="q4" value=4>
+    <input type="radio" name="questions" id="q5" value=5>
+    <input type="radio" name="questions" id="q6" value=6>
+    <input type="radio" name="questions" id="q7" value=7>
+    <input type="radio" name="questions" id="q8" value=8>
+    <input type="radio" name="questions" id="q9" value=9>
+    <input type="radio" name="questions" id="q10" value=10>
+
+    <div class="questions-line">
+        
+        <label for = "q1" class="first" id="lq1">1</label>        
+        <label for = "q2" id="lq2">2</label>
+        <label for = "q3" id="lq3">3</label>
+        <label for = "q4" id="lq4">4</label>
+        <label for = "q5" id="lq5">5</label>
+        <label for = "q6" id="lq6">6</label>
+        <label for = "q7" id="lq7">7</label>
+        <label for = "q8" id="lq8">8</label>
+        <label for = "q9" id="lq9">9</label>
+        <label for = "q10" class="last" id="lq10">10</label>
+    </div>      
+    <!-- Вопрос 1 -->    
+    <div class="questions" id="questions-q1">
+
+        <div class="question" 	id="questionNum"></div>
+        <div class="question" >
+            <span id="question"></span>
+        </div>
+        <div class="answers" 	id="answer1">
+            <input type="radio" name="answers-q1" id="input-answer1" value="1">
+            <label for="input-answer1"></label>
+        </div>
+        <div class="answers" 	id="answer2">
+            <input type="radio" name="answers-q1" id="input-answer2" value="2">
+            <label for="input-answer2"></label>
+        </div>
+        <div class="answers" 	id="answer3">
+            <input type="radio" name="answers-q1" id="input-answer3" value="3">
+            <label for="input-answer3"></label>
+        </div>
+        <div class="answers" 	id="answer4">
+            <input type="radio" name="answers-q1" id="input-answer4" value="4">
+            <label for="input-answer4"></label>
+        </div>
+        <div class = "div_button">
+            <input type = "checkbox" id = "hint-q1" checked="checked" class="hint-input"/>
+            <p class="hint"><label class="label-show" for= "hint-q1">Показать пояснения</label>
+                            <label class="label-hide" for= "hint-q1">Скрыть пояснения</label></p>
+            <p class="end-test">Завершить тестирование</p><p class="next">Следующий вопрос</p>
+            <div class="pravila"></div>
+        </div>             
+    </div>
+    <!-- Вопрос 2 -->
+    <div class="questions" id="questions-q2">
+
+        <div class="question" 	id="questionNum"></div>
+        <div class="question" >
+            <span id="question"></span>
+        </div>
+        <div class="answers" 	id="answer1">
+            <input type="radio" name="answers-q2" id="input-answer1-q2" value="1">
+            <label for="input-answer1-q2"></label>
+        </div>
+        <div class="answers" 	id="answer2">
+            <input type="radio" name="answers-q2" id="input-answer2-q2" value="2">
+            <label for="input-answer2-q2"></label>
+        </div>
+        <div class="answers" 	id="answer3">
+            <input type="radio" name="answers-q2" id="input-answer3-q2" value="3">
+            <label for="input-answer3-q2"></label>
+        </div>
+        <div class="answers" 	id="answer4">
+            <input type="radio" name="answers-q2" id="input-answer4-q2" value="4">
+            <label for="input-answer4-q2"></label>
+        </div>
+        <div class = "div_button">
+            <input type = "checkbox" id = "hint-q2" checked="checked" class="hint-input"/>
+            <p class="hint"><label class="label-show" for= "hint-q2">Показать пояснения</label>
+                            <label class="label-hide" for= "hint-q2">Скрыть пояснения</label></p>
+            <p class="end-test">Завершить тестирование</p><p class="next">Следующий вопрос</p>
+            <div class="pravila"></div>
+        </div>             
+    </div>
+    <!-- Вопрос 3 -->
+    <div class="questions" id="questions-q3">
+        <!-- Вопрос 3 -->
+        <div class="question" 	id="questionNum"></div>
+        <div class="question" >
+            <span id="question"></span>
+        </div>
+        <div class="answers" 	id="answer1">
+            <input type="radio" name="answers-q3" id="input-answer1-q3" value="1">
+            <label for="input-answer1-q3"></label>
+        </div>
+        <div class="answers" 	id="answer2">
+            <input type="radio" name="answers-q3" id="input-answer2-q3" value="2">
+            <label for="input-answer2-q3"></label>
+        </div>
+        <div class="answers" 	id="answer3">
+            <input type="radio" name="answers-q3" id="input-answer3-q3" value="3">
+            <label for="input-answer3-q3"></label>
+        </div>
+        <div class="answers" 	id="answer4">
+            <input type="radio" name="answers-q3" id="input-answer4-q3" value="4">
+            <label for="input-answer4-q3"></label>
+        </div>
+        <div class = "div_button">
+            <input type = "checkbox" id = "hint-q3" checked="checked" class="hint-input"/>
+            <p class="hint"><label class="label-show" for= "hint-q3">Показать пояснения</label>
+                            <label class="label-hide" for= "hint-q3">Скрыть пояснения</label></p>
+            <p class="end-test">Завершить тестирование</p><p class="next">Следующий вопрос</p>
+            <div class="pravila"></div>
+        </div>             
+    </div>
+    <!-- Вопрос 4 -->
+    <div class="questions" id="questions-q4">
+        <div class="question" 	id="questionNum"></div>
+        <div class="question" >
+            <span id="question"></span>
+        </div>
+        <div class="answers" 	id="answer1">
+            <input type="radio" name="answers-q4" id="input-answer1-q4" value="1">
+            <label for="input-answer1-q4"></label>
+        </div>
+        <div class="answers" 	id="answer2">
+            <input type="radio" name="answers-q4" id="input-answer2-q4" value="2">
+            <label for="input-answer2-q4"></label>
+        </div>
+        <div class="answers" 	id="answer3">
+            <input type="radio" name="answers-q4" id="input-answer3-q4" value="3">
+            <label for="input-answer3-q4"></label>
+        </div>
+        <div class="answers" 	id="answer4">
+            <input type="radio" name="answers-q4" id="input-answer4-q4" value="4">
+            <label for="input-answer4-q4"></label>
+        </div>
+        <div class = "div_button">
+            <input type = "checkbox" id = "hint-q4" checked="checked" class="hint-input"/>
+            <p class="hint"><label class="label-show" for= "hint-q4">Показать пояснения</label>
+                            <label class="label-hide" for= "hint-q4">Скрыть пояснения</label></p>
+            <p class="end-test">Завершить тестирование</p><p class="next">Следующий вопрос</p>
+            <div class="pravila"></div>
+        </div>
+    </div>
+    <!-- Вопрос 5 -->
+    <div class="questions" id="questions-q5">
+        <div class="question" 	id="questionNum"></div>
+        <div class="question" >
+            <span id="question"></span>
+        </div>
+        <div class="answers" 	id="answer1">
+            <input type="radio" name="answers-q5" id="input-answer1-q5" value="1">
+            <label for="input-answer1-q5"></label>
+        </div>
+        <div class="answers" 	id="answer2">
+            <input type="radio" name="answers-q5" id="input-answer2-q5" value="2">
+            <label for="input-answer2-q5"></label>
+        </div>
+        <div class="answers" 	id="answer3">
+            <input type="radio" name="answers-q5" id="input-answer3-q5" value="3">
+            <label for="input-answer3-q5"></label>
+        </div>
+        <div class="answers" 	id="answer4">
+            <input type="radio" name="answers-q5" id="input-answer4-q5" value="4">
+            <label for="input-answer4-q5"></label>
+        </div>
+        <div class = "div_button">
+            <input type = "checkbox" id = "hint-q5" checked="checked" class="hint-input"/>
+            <p class="hint"><label class="label-show" for= "hint-q5">Показать пояснения</label>
+                            <label class="label-hide" for= "hint-q5">Скрыть пояснения</label></p>
+            <p class="end-test">Завершить тестирование</p><p class="next">Следующий вопрос</p>
+            <div class="pravila"></div>
+        </div> 
+    </div>
+    <!-- Вопрос 6 -->
+    <div class="questions" id="questions-q6">
+        <div class="question" 	id="questionNum"></div>
+        <div class="question" >
+            <span id="question"></span>
+        </div>
+        <div class="answers" 	id="answer1">
+            <input type="radio" name="answers-q6" id="input-answer1-q6" value="1">
+            <label for="input-answer1-q6"></label>
+        </div>
+        <div class="answers" 	id="answer2">
+            <input type="radio" name="answers-q6" id="input-answer2-q6" value="2">
+            <label for="input-answer2-q6"></label>
+        </div>
+        <div class="answers" 	id="answer3">
+            <input type="radio" name="answers-q6" id="input-answer3-q6" value="3">
+            <label for="input-answer3-q6"></label>
+        </div>
+        <div class="answers" 	id="answer4">
+            <input type="radio" name="answers-q6" id="input-answer4-q6" value="4">
+            <label for="input-answer4-q6"></label>
+        </div>
+        <div class = "div_button">
+            <input type = "checkbox" id = "hint-q6" checked="checked" class="hint-input"/>
+            <p class="hint"><label class="label-show" for= "hint-q6">Показать пояснения</label>
+                            <label class="label-hide" for= "hint-q6">Скрыть пояснения</label></p>
+            <p class="end-test">Завершить тестирование</p><p class="next">Следующий вопрос</p>
+            <div class="pravila"></div>
+        </div> 
+    </div>
+    <!-- Вопрос 7 -->
+    <div class="questions" id="questions-q7">
+        <div class="question" 	id="questionNum"></div>
+        <div class="question" >
+            <span id="question"></span>
+        </div>
+        <div class="answers" 	id="answer1">
+            <input type="radio" name="answers-q7" id="input-answer1-q7" value="1">
+            <label for="input-answer1-q7"></label>
+        </div>
+        <div class="answers" 	id="answer2">
+            <input type="radio" name="answers-q7" id="input-answer2-q7" value="2">
+            <label for="input-answer2-q7"></label>
+        </div>
+        <div class="answers" 	id="answer3">
+            <input type="radio" name="answers-q7" id="input-answer3-q7" value="3">
+            <label for="input-answer3-q7"></label>
+        </div>
+        <div class="answers" 	id="answer4">
+            <input type="radio" name="answers-q7" id="input-answer4-q7" value="4">
+            <label for="input-answer4-q7"></label>
+        </div>
+        <div class = "div_button">
+            <input type = "checkbox" id = "hint-q7" checked="checked" class="hint-input"/>
+            <p class="hint"><label class="label-show" for= "hint-q7">Показать пояснения</label>
+                            <label class="label-hide" for= "hint-q7">Скрыть пояснения</label></p>
+            <p class="end-test">Завершить тестирование</p><p class="next">Следующий вопрос</p>
+            <div class="pravila"></div>
+        </div> 
+    </div>
+    <!-- Вопрос 8 -->
+    <div class="questions" id="questions-q8">
+        <div class="question" 	id="questionNum"></div>
+        <div class="question" >
+            <span id="question"></span>
+        </div>
+        <div class="answers" 	id="answer1">
+            <input type="radio" name="answers-q8" id="input-answer1-q8" value="1">
+            <label for="input-answer1-q8"></label>
+        </div>
+        <div class="answers" 	id="answer2">
+            <input type="radio" name="answers-q8" id="input-answer2-q8" value="2">
+            <label for="input-answer2-q8"></label>
+        </div>
+        <div class="answers" 	id="answer3">
+            <input type="radio" name="answers-q8" id="input-answer3-q8" value="3">
+            <label for="input-answer3-q8"></label>
+        </div>
+        <div class="answers" 	id="answer4">
+            <input type="radio" name="answers-q8" id="input-answer4-q8" value="4">
+            <label for="input-answer4-q8"></label>
+        </div>
+        <div class = "div_button">
+            <input type = "checkbox" id = "hint-q8" checked="checked" class="hint-input"/>
+            <p class="hint"><label class="label-show" for= "hint-q8">Показать пояснения</label>
+                            <label class="label-hide" for= "hint-q8">Скрыть пояснения</label></p>
+            <p class="end-test">Завершить тестирование</p><p class="next">Следующий вопрос</p>
+            <div class="pravila"></div>
+        </div> 
+    </div>
+    <!-- Вопрос 9 -->
+    <div class="questions" id="questions-q9">
+        <div class="question" 	id="questionNum"></div>
+        <div class="question" >
+            <span id="question"></span>
+        </div>
+        <div class="answers" 	id="answer1">
+            <input type="radio" name="answers-q9" id="input-answer1-q9" value="1">
+            <label for="input-answer1-q9"></label>
+        </div>
+        <div class="answers" 	id="answer2">
+            <input type="radio" name="answers-q9" id="input-answer2-q9" value="2">
+            <label for="input-answer2-q9"></label>
+        </div>
+        <div class="answers" 	id="answer3">
+            <input type="radio" name="answers-q9" id="input-answer3-q9" value="3">
+            <label for="input-answer3-q9"></label>
+        </div>
+        <div class="answers" 	id="answer4">
+            <input type="radio" name="answers-q9" id="input-answer4-q9" value="4">
+            <label for="input-answer4-q9"></label>
+        </div>
+        <div class = "div_button">
+            <input type = "checkbox" id = "hint-q9" checked="checked" class="hint-input"/>
+            <p class="hint"><label class="label-show" for= "hint-q9">Показать пояснения</label>
+                            <label class="label-hide" for= "hint-q9">Скрыть пояснения</label></p>
+            <p class="end-test">Завершить тестирование</p><p class="next">Следующий вопрос</p>
+            <div class="pravila"></div>
+        </div> 
+    </div>
+    <!-- Вопрос 10 -->
+    <div class="questions" id="questions-q10">
+        <div class="question" 	id="questionNum"></div>
+        <div class="question" >
+            <span id="question"></span>
+        </div>
+        <div class="answers" 	id="answer1">
+            <input type="radio" name="answers-q10" id="input-answer1-q10" value="1">
+            <label for="input-answer1-q10"></label>
+        </div>
+        <div class="answers" 	id="answer2">
+            <input type="radio" name="answers-q10" id="input-answer2-q10" value="2">
+            <label for="input-answer2-q10"></label>
+        </div>
+        <div class="answers" 	id="answer3">
+            <input type="radio" name="answers-q10" id="input-answer3-q10" value="3">
+            <label for="input-answer3-q10"></label>
+        </div>
+        <div class="answers" 	id="answer4">
+            <input type="radio" name="answers-q10" id="input-answer4-q10" value="4">
+            <label for="input-answer4-q10"></label>
+        </div>
+        <div class = "div_button">
+            <input type = "checkbox" id = "hint-q10" checked="checked" class="hint-input"/>
+            <p class="hint"><label class="label-show" for= "hint-q10">Показать пояснения</label>
+                            <label class="label-hide" for= "hint-q10">Скрыть пояснения</label></p>
+            <p class="end-test">Завершить тестирование</p><p class="next">Следующий вопрос</p>
+            <div class="pravila"></div>
+        </div> 
+    </div>
+        
+</body>
+</html>
