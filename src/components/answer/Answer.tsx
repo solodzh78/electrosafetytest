@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
+import { useTraceUpdate } from "../../hooks/useTraceUpdate";
 
-import styles from "./Answer.module.css";
-
-export function Answer(text: string, name: string, value: number) {
-    // const count = useAppSelector(selectCount);
-
+interface IAnswer {
+    text: string,
+    name: string,
+    value: number,
+    checked: boolean,
+    labelId: string,
+}
+export const Answer = (props: IAnswer) => {
+    const { text, name, value, checked, labelId} = props;
+    console.log("Рендер: ", labelId);
+    useTraceUpdate(props);
     return (
-        <label className={styles.answer}>
-            <input type="radio" value={value} name={name}/>
-            {text}
-        </label>
-    )
+        <> 
+            <input
+                type="radio"
+                value={value}
+                name={name}
+                checked={checked}
+                id={labelId}
+                readOnly
+            />
+            <label htmlFor={labelId}>{text}</label>
+        </>
+    );
 }

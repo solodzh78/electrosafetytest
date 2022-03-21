@@ -1,60 +1,70 @@
-import React, { useState } from "react";
+import React, { useCallback } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { setSelectedAnswer } from "../../store/quizSlice";
+import { Answer } from "../answer/Answer";
 
-import { useAppSelector, useAppDispatch } from "../../store/hooks";
-// import {
-// 	decrement,
-// 	increment,
-// 	incrementByAmount,
-// 	incrementAsync,
-// 	incrementIfOdd,
-// 	selectCount,
-// } from './cardSlice';
 import styles from "./Card.module.css";
-import data from '../../cardData.json'
-import { Answer } from "../answer/answer";
+// import data from '../../cardData.json'
 
-export function Card() {
-    // const count = useAppSelector(selectCount);
-    // const dispatch = useAppDispatch();
-    // const [incrementAmount, setIncrementAmount] = useState('2');
+interface ICardProps {
+    cardNumber: number
+}
 
-    // const incrementValue = Number(incrementAmount) || 0;
-	console.log(data);
+export function Card(props: ICardProps) {
+    const {cardNumber} = props;
+    const dispatch = useAppDispatch();
+
+    const question =  useAppSelector(state => {
+        if (state.quiz.quiz && state.quiz.quiz.length !== 0) {
+            return state.quiz.quiz[(cardNumber - 1)]["question"]
+        }
+    });
+
+    const answers = useAppSelector(state => {
+        if (state.quiz.quiz && state.quiz.quiz.length !== 0) {
+            return state.quiz.quiz[(cardNumber - 1)]["answers"]
+        }
+    });
+
+    const id = useAppSelector(state => {
+        if (state.quiz.quiz && state.quiz.quiz.length !== 0) {
+            return state.quiz.quiz[(cardNumber - 1)]["id"]
+        }
+    });
+
+    const handleOptionChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(setSelectedAnswer({ 
+            cardNumber, 
+            "selectedAnswer": +event.target.value}));
+    };
+
+    const handleOptionChange = useCallback(handleOptionChange1, [cardNumber, dispatch]);
+
+    console.log("render card", cardNumber);
 
     return (
-        <div>
-            <div className={styles.questions} id="questions-q1">
-                <div className={styles.question} id="questionNum"></div>
-                <div className={styles.question}>
-                    <span id="question"></span>
-                </div>
-                <div className={styles.answers} id="answer1">
-					{data.answers.map((item, index) => 
-						<Answer
-							text={item}
-							name={"answer" + data.id}
-							value={index + 1}
-						/>)}
-                </div>
-                <div className={styles.div_button}>
-                    <input
-                        type="checkbox"
-                        id="hint-q1"
-                        className={styles.hintInput}//
-                    />
-                    <p className={styles.hint}>
-                        <label className={styles.labelShow} htmlFor="hint-q1">
-                            Показать пояснения
-                        </label>
-                        <label className={styles.labelHide} htmlFor="hint-q1">
-                            Скрыть пояснения
-                        </label>
-                    </p>
-                    <p className={styles.endTest}>Завершить тестирование</p>
-                    <p className={styles.next}>Следующий вопрос</p>
-                    <div className={styles.pravila}></div>
-                </div>
-            </div>
-        </div>
+        <>
+            
+                <>
+                    <div className={styles.question}>
+                        <span id="question">{question}</span>
+                    </div>
+                    <div className={styles.answers} onChange={handleOptionChange}>
+                    {answers && answers.map((item, index) => {
+                            const key = "card_" + cardNumber + "_answer_" + (index + 1) + "_" + data.id;
+                            return <Answer
+                                key={key}
+                                text={item}
+                                name={"answer" + id}
+                                value={index + 1}
+                                checked={data.selectedAnswer === (index + 1) ? true : false}
+                                labelId={key}
+                            />
+                        }
+                        )}
+                    </div>
+                </>
+            
+        </>
     );
 }

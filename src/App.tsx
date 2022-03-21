@@ -1,13 +1,14 @@
 import React from 'react';
-import { Card } from './components/card/Card';
+import { Quiz } from './components/quiz/Quiz';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-        <Card />
-    </div>
-  )
+
+	return (
+		<div className="App">
+			<Quiz />
+		</div>
+	)
 }
 
 export default App;
