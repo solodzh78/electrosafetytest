@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setSelectedAnswer } from "../../store/quizSlice";
-import { Answer } from "../answer/Answer";
+import Answer from "../answer/Answer";
 
 import styles from "./Card.module.css";
 // import data from '../../cardData.json'
@@ -44,27 +44,21 @@ export function Card(props: ICardProps) {
 
     return (
         <>
-            
-                <>
-                    <div className={styles.question}>
-                        <span id="question">{question}</span>
-                    </div>
-                    <div className={styles.answers} onChange={handleOptionChange}>
-                    {answers && answers.map((item, index) => {
-                            const key = "card_" + cardNumber + "_answer_" + (index + 1) + "_" + data.id;
-                            return <Answer
-                                key={key}
-                                text={item}
-                                name={"answer" + id}
-                                value={index + 1}
-                                checked={data.selectedAnswer === (index + 1) ? true : false}
-                                labelId={key}
-                            />
-                        }
-                        )}
-                    </div>
-                </>
-            
+            <div className={styles.question}>
+                <span id="question">{question}</span>
+            </div>
+            <div className={styles.answers} onChange={handleOptionChange}>
+            {answers && answers.map((item, index) => {
+                    const answerNumber = index + 1
+                    const key = `card_${cardNumber}_${id}_answer_${answerNumber}`;
+                    return <Answer
+                        key={key}
+                        answerNumber={answerNumber}
+                        cardNumber={cardNumber}
+                    />
+                }
+                )}
+            </div>
         </>
     );
 }
