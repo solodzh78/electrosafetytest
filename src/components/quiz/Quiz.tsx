@@ -1,5 +1,5 @@
 import React, { useEffect} from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch } from '../../store/hooks';
 import { fetchQuiz } from "../../store/quizSlice";
 import { Card } from '../card/Card';
 

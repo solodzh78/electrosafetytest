@@ -1,10 +1,8 @@
 import React, { useCallback } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppDispatch, useGetValueFromStore } from "../../store/hooks";
 import { setSelectedAnswer } from "../../store/quizSlice";
 import Answer from "../answer/Answer";
-
 import styles from "./Card.module.css";
-// import data from '../../cardData.json'
 
 interface ICardProps {
     cardNumber: number
@@ -14,41 +12,26 @@ export function Card(props: ICardProps) {
     const {cardNumber} = props;
     const dispatch = useAppDispatch();
 
-    const question =  useAppSelector(state => {
-        if (state.quiz.quiz && state.quiz.quiz.length !== 0) {
-            return state.quiz.quiz[(cardNumber - 1)]["question"]
-        }
-    });
+    const question = useGetValueFromStore("question", cardNumber); 
+    let answers = useGetValueFromStore("answers", cardNumber);
+    const id = useGetValueFromStore("id", cardNumber);
 
-    const answers = useAppSelector(state => {
-        if (state.quiz.quiz && state.quiz.quiz.length !== 0) {
-            return state.quiz.quiz[(cardNumber - 1)]["answers"]
-        }
-    });
-
-    const id = useAppSelector(state => {
-        if (state.quiz.quiz && state.quiz.quiz.length !== 0) {
-            return state.quiz.quiz[(cardNumber - 1)]["id"]
-        }
-    });
-
-    const handleOptionChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(setSelectedAnswer({ 
-            cardNumber, 
-            "selectedAnswer": +event.target.value}));
-    };
-
-    const handleOptionChange = useCallback(handleOptionChange1, [cardNumber, dispatch]);
+    const handleOptionChange = useCallback(() => ((event: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(setSelectedAnswer({
+            cardNumber,
+            "selectedAnswer": +event.target.value
+        }));
+    }), [cardNumber, dispatch]);
 
     console.log("render card", cardNumber);
-
     return (
         <>
             <div className={styles.question}>
                 <span id="question">{question}</span>
             </div>
             <div className={styles.answers} onChange={handleOptionChange}>
-            {answers && answers.map((item, index) => {
+                { 
+                    Array.isArray(answers) && answers.map((item, index) => {
                     const answerNumber = index + 1
                     const key = `card_${cardNumber}_${id}_answer_${answerNumber}`;
                     return <Answer
@@ -56,8 +39,7 @@ export function Card(props: ICardProps) {
                         answerNumber={answerNumber}
                         cardNumber={cardNumber}
                     />
-                }
-                )}
+                })}
             </div>
         </>
     );
