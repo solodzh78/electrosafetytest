@@ -1,14 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchLocalQuiz } from "../api/quizAPI";
 
-// interface IInputObject{
-//     id: number,
-//     question: string,
-//     answers: string[],
-//     correctAnswer: number,
-//     selectedAnswer?: number | undefined;
-// }
-
 export interface ICard {
     id: number;
     question: string;
@@ -25,33 +17,6 @@ export interface IQuizState {
     status: "idle" | "loading" | "success" | "failed";
     error: [];
 }
-
-// const changeInputData = (arr: IInputObject[]): ICard[] => {
-//     const data = [];
-//     for (let i = 0; i < arr.length; i++) {
-//         let dataItem: any = {};
-//         const obj = arr[i];
-
-//         let key: keyof IInputObject;
-//         for (key in obj) {
-//             if (key === "answers") {
-//                 const answers = [];
-//                 for (let j = 0; j < arr[i].answers.length; j++) {
-//                     const newAnswer = {
-//                         text: obj.answers[j],
-//                         checked: false,
-//                     };
-//                     answers.push(newAnswer);
-//                 }
-//                 dataItem[key] = answers;
-//             } else {
-//                 dataItem[key] = obj[key];
-//             }
-//         }
-//         data.push(dataItem);
-//     }
-//     return data;
-// };
 
 export const fetchQuiz = createAsyncThunk(
     "quiz/fetchQuiz",

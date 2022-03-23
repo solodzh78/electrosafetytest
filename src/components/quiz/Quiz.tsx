@@ -13,14 +13,6 @@ export function Quiz() {
 
 	console.log("render quiz");
 
-/* 	interface ICard {
-		id: number,
-			question: string,
-				answers: string[],
-					correctAnswer: number,
-						selectedAnswer ?: number
-	}
- */
 	return (
 		<Container>
 			{[...new Array(10)].map((item, index) => {

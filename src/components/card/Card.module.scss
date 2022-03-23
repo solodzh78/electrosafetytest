@@ -17,10 +17,18 @@
 
 /* Стили ответов----------------------------------------------------------------------------*/
 .answers {	
-	max-width: 720px;
+	// max-width: 720px;
 	margin: 0 auto;
 	margin-top: 2%;
 	margin-bottom: 2%;
+	
+	input[type="radio"] {
+		display: none;
+		&:checked+label {
+			background: #0080c0;
+			color: #ffffff;
+		}
+	}
 
 	label {	
 		font-size: 20px;
@@ -36,21 +44,16 @@
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
 		border-radius: 5px;
+		border: 2px solid transparent;
 		cursor: default;
 
 		&:hover {		
-			background-color: #0080c0;
+			background-color: #0176b1 !important;
 			color:#fafafa;
+			border: 2px solid #0176b1;
 			-webkit-box-shadow: 0 0 10px 1px #060724;
 			box-shadow: 0 0 10px 1px #060724;
 		}
 	}
 
-	input[type="radio"] {
-		display: none;
-		&:checked+label {
-			background: #0080c0;
-			color: #ffffff;
-		}
-	}
 }
