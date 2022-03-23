@@ -1,4 +1,3 @@
-import { IQuizState } from "../store/quizSlice";
 // A mock function to mimic making an async request for data
 export function fetchLocalQuiz() {
     return new Promise<{ data: any}>((resolve) =>

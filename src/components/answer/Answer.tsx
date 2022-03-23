@@ -1,28 +1,36 @@
 import React from "react";
-import { useGetValueFromStore } from "../../store/hooks";
+import { RootState } from "../../store";
+import { useAppSelector, useGetValueFromStore } from "../../store/hooks";
 
-interface IAnswer {
+interface IAnswerProp {
     answerNumber: number,
     cardNumber: number,
 }
-export const Answer = ({ cardNumber, answerNumber }: IAnswer) => {
 
-    const answer = useGetValueFromStore("answers", cardNumber, answerNumber); 
-    console.log('answer: ', answer);
-    const answerText = (answer.text) ? answer.text : '';
+export interface IAnswerObjectFromStore {
+    text: string;
+    checked: boolean;
+}
+
+export const Answer = ({ cardNumber, answerNumber }: IAnswerProp) => {
+
+    const answerText = useGetValueFromStore("answers", cardNumber, answerNumber); 
+    const checked = useAppSelector(({ quiz: { quiz } }: RootState) =>
+        quiz &&
+        quiz.length !== 0 &&
+        quiz[cardNumber - 1].selectedAnswer === answerNumber);
     const id = useGetValueFromStore("id", cardNumber); 
-    const selectedAnswer = useGetValueFromStore("selectedAnswer", cardNumber); 
-
     const labelId = `card_${cardNumber}_${id}_answer_${answerNumber}`
 
-    console.log("Рендер: ", labelId);
+    console.log("Рендер Answer: ", labelId);
+
     return (
         <> 
             <input
                 type="radio"
                 value={answerNumber}
                 name={`card_${cardNumber}_${id}`}
-                checked={selectedAnswer === answerNumber ? true : false}
+                checked={checked}
                 id={labelId}
                 readOnly
             />

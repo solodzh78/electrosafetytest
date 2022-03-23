@@ -1,0 +1,56 @@
+/* Стиль вопроса---------------------------------------------------------------------------- */
+.question {
+	padding-left:2%;
+	padding-right:2%;
+	font-weight: bold;
+
+	.number {
+		align-items: left;
+	}
+
+	span {
+		display: block;
+		text-transform: uppercase;
+		font-size: 20px;
+	}	
+}
+
+/* Стили ответов----------------------------------------------------------------------------*/
+.answers {	
+	max-width: 720px;
+	margin: 0 auto;
+	margin-top: 2%;
+	margin-bottom: 2%;
+
+	label {	
+		font-size: 20px;
+		font-family: "Segoe UI", Arial, sans-serif;
+		display: block;	
+		position: relative;
+		margin: 1% auto;
+		padding:4%;
+		padding-top: 2%;
+		padding-bottom: 2%;
+		background-color: #A5D0E7;
+		color: #1a284f;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		cursor: default;
+
+		&:hover {		
+			background-color: #0080c0;
+			color:#fafafa;
+			-webkit-box-shadow: 0 0 10px 1px #060724;
+			box-shadow: 0 0 10px 1px #060724;
+		}
+	}
+
+	input[type="radio"] {
+		display: none;
+		&:checked+label {
+			background: #0080c0;
+			color: #ffffff;
+		}
+	}
+}

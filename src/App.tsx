@@ -1,6 +1,5 @@
 import React from 'react';
 import { Quiz } from './components/quiz/Quiz';
-import './App.css';
 
 function App() {
 

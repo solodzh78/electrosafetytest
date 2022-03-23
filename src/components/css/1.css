@@ -1,150 +1,3 @@
-/* Стиль заголовка */
-.title{
-	font-size: 22px;
-	font-family: "Segoe UI", Arial, sans-serif;
-	min-width: 320px;
-	max-width: 720px;
-	margin: 0 auto;
-	padding-left: 2%;
-	padding-right: 2%;
-	padding-bottom: 8px;
-	text-align: center;
-	font-weight: bold;
-}
-
-body{
-	margin-top: 0;
-}
-
-/* Стиль верхнего меню */
-div.questions-line{
-	height: 34px;
-	min-width: 320px;
-	max-width: 720px;
-	margin: 0 auto;	
-}
-.first{
-	-webkit-border-radius: 6px 0 0 6px;
-	-moz-border-radius: 6px 0 0 6px;	
-	border-radius: 6px 0 0 6px;
-}
-.last{
-	-webkit-border-radius: 0 6px 6px 0;
-	-moz-border-radius: 0 6px 6px 0;	
-	border-radius: 0 6px 6px 0;
-}
-div.questions {	
-	font-size: 22px;
-	font-family: "Segoe UI", Arial, sans-serif;
-	min-width: 320px;
-	max-width: 720px;
-	margin: 0 auto;	
-}
-
-input[type='radio']{
-	display: none;
-}
-
-.questions-line label{	
-	width: 10%;
-  display: block;
-	float: left;
-	position: relative;
-	font-size: 22px;
-	height: 34px;
-	text-align: center;
-	transition: font-size .3s ease;
-	margin: 0 auto;
-	margin: -1px;
-	border: 1px solid #8e8e8e;
-	font-weight: bold;
-	color: #1a284f;
-}
-
-.questions-line input[type="radio"]:checked+label{
-	font-weight: bold; 
-	/* background: #0080c0b4; */
-	border: 2px solid #fa0000;
-	margin: -2px;
-	/* border-bottom-color: #073e46; */
-	
-	-webkit-border-radius: 6px !important;
-	-moz-border-radius: 6px !important;	
-	border-radius: 6px !important;
-	font-size: 28px;
-}
-
-.questions-line label:hover{
-	border: 1px solid #8e8e8e;
-	margin: -1px;
-	/* border-bottom-color: #008799; */
-	font-size: 32px !important;
-	/* background: lightgrey;	 */
-	/* opacity: 0; */
-	-webkit-box-shadow: 0px 0px 10px 0px black;
-	-moz-box-shadow: 0px 0px 10px 0px black;
-	box-shadow: 0px 0px 10px 0px black;	
-
-	-webkit-border-radius: 6px !important;
-	-moz-border-radius: 6px !important;
-	border-radius: 6px !important;
-	z-index: 3;
-	opacity: 0.9;
-}
-
-/* Стиль вопроса---------------------------------------------------------------------------- */
-.question{
-	padding-left:2%;
-	padding-right:2%;
-	font-weight: bold;	
-}
-.question > span{
-	text-transform: uppercase;
-	font-size: 20px;
-}
-
-.answers {	
-	max-width: 720px;
-	margin: 0 auto;
-	margin-top: 2%;
-	margin-bottom: 2%;
-}
-
-.answers label:hover{		
-	background-color: #0080c0;
-	color:#fafafa;
-	-webkit-box-shadow: 0 0 10px 1px #060724;
-	box-shadow: 0 0 10px 1px #060724;
-}
-.answers > label {	
-	display: block;	
-	position: relative;
-	margin: 1% auto;
-	padding:4%;
-	padding-top: 2%;
-	padding-bottom: 2%;
-	background-color:#A5D0E7;	
-	color:#1a284f;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	cursor: default;
-}
-
-.answers>input[type="radio"]:checked+label {
-	/* font-weight: bold;  */
-	background: #0080c0;
-	color: #ffffff;
-	/* border: 1px solid #8e8e8e;
-	margin: -1px;
-	border-bottom-color: #073e46; */
-	
-	/* -webkit-border-radius: 6px !important;
-	-moz-border-radius: 6px !important;	
-	border-radius: 6px !important;
-	font-size: 28px; */
-}
-
 /* Стиль подсказки ----------------------------------------------------------------*/
 
 .div_button{
@@ -248,7 +101,6 @@ label.label-show{
 	display: block;
 }
 
-
 #q1:checked ~ div.questions-line>#lq1,
 #q2:checked ~ div.questions-line>#lq2,
 #q3:checked ~ div.questions-line>#lq3,
@@ -284,9 +136,11 @@ label.label-show{
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
 .next:hover{
 	background: grey;
 }
+
 .end-test{
 	display: none;
 	color: black;

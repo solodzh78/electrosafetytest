@@ -9,13 +9,13 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useGetValueFromStore = (
     key: keyof ICard,
     cardNumber: number,
-    answerNumber = 0
+    answerNumber: number = 0
 ) =>
     useAppSelector(({ quiz: { quiz } }: RootState) => {
         if (quiz && quiz.length !== 0) {
             if (answerNumber === 0) return quiz[cardNumber - 1][key];
 
 			const answers = quiz[cardNumber - 1][key];
-			if (Array.isArray(answers)) return answers[answerNumber];
+			if (Array.isArray(answers)) return answers[answerNumber - 1];
 		} 
     });
