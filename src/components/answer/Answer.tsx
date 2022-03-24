@@ -39,4 +39,4 @@ export const Answer = ({ cardNumber, answerNumber }: IAnswerProp) => {
     );
 }
 
-export default React.memo(Answer)
+// export default React.memo(Answer)
