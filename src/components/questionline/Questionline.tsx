@@ -2,6 +2,7 @@ import React, { ChangeEvent  } from "react";
 import { RootState } from "../../store";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { setSelectedCard } from "../../store/mainSlice";
+import { scroller } from "react-scroll";
 import styles from './Questionline.module.scss'
 
 export const Questionline: React.FC = () => {
@@ -14,6 +15,13 @@ export const Questionline: React.FC = () => {
         dispatch(setSelectedCard({
             selectedCard: +event.target.value
         }));
+        scroller.scrollTo(`myScrollToElement${+event.target.value}`, {
+            duration: 1500,
+            delay: 100,
+            smooth: true,
+            // containerId: 'ContainerElementID',
+            offset: 0, // Scrolls to element + 50 pixels down the page
+        })
     }
 	return (
         <div className={styles["question-line"]} onChange={handlerChange}>
