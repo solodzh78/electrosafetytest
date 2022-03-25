@@ -1,6 +1,6 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from ".";
-import { ICard } from "./quizSlice";
+import { ICard } from "./mainSlice";
 
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch = () => useDispatch<AppDispatch>();
@@ -11,11 +11,17 @@ export const useGetValueFromStore = (
     cardNumber: number,
     answerNumber: number = 0
 ) =>
-    useAppSelector(({ quiz: { quiz } }: RootState) => {
-        if (quiz && quiz.length !== 0) {
-            if (answerNumber === 0) return quiz[cardNumber - 1][key];
+    useAppSelector(
+        ({
+            main: {
+                quiz: { ticket },
+            },
+        }: RootState) => {
+            if (ticket && ticket.length !== 0) {
+                if (answerNumber === 0) return ticket[cardNumber - 1][key];
 
-			const answers = quiz[cardNumber - 1][key];
-			if (Array.isArray(answers)) return answers[answerNumber - 1];
-		} 
-    });
+                const answers = ticket[cardNumber - 1][key];
+                if (Array.isArray(answers)) return answers[answerNumber - 1];
+            }
+        }
+    );

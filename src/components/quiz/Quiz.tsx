@@ -1,7 +1,7 @@
 import React, { useEffect} from 'react';
-import { Questionline } from '../../questionline/Questionline';
+import { Questionline } from '../questionline/Questionline';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchQuiz } from "../../store/quizSlice";
+import { fetchQuiz } from "../../store/mainSlice";
 import { Card } from '../card/Card';
 import { Container } from '../container/Container';
 import { Preloader } from '../preloarer/Preloader';
@@ -14,7 +14,7 @@ export function Quiz() {
 		dispatch(fetchQuiz());
 	}, [dispatch]);
 
-	const status = useAppSelector(state => state.quiz.status)
+	const status = useAppSelector(state => state.main.status)
 	console.log('status: ', status, status === "loading");
 
 	console.log("render quiz");

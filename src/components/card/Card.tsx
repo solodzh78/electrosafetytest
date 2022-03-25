@@ -1,7 +1,7 @@
 import React from "react";
 import { RootState } from "../../store";
 import { useAppDispatch, useAppSelector, useGetValueFromStore } from "../../store/hooks";
-import { setSelectedAnswer } from "../../store/quizSlice";
+import { setSelectedAnswer } from "../../store/mainSlice";
 import { Answer } from "../answer/Answer";
 import styles from "./Card.module.scss";
 
@@ -14,10 +14,10 @@ export function Card({ cardNumber }: ICardProps) {
     const dispatch = useAppDispatch();
 
     const question = useGetValueFromStore("question", cardNumber); 
-    const answersCount = useAppSelector(({ quiz: { quiz } }: RootState) => 
-        quiz && 
-        quiz.length !== 0 && 
-        quiz[cardNumber - 1].answers.length);
+    const answersCount = useAppSelector(({ main: { quiz: { ticket } } }: RootState) => 
+        ticket && 
+        ticket.length !== 0 && 
+        ticket[cardNumber - 1].answers.length);
     const id = useGetValueFromStore("id", cardNumber);
 
     const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +30,7 @@ export function Card({ cardNumber }: ICardProps) {
     console.log("render card", cardNumber);
     return (
         <>
-            <div className={styles.question}>
+            <div className={styles.question} id={`card${cardNumber}`}>
                 <span className={styles.number}>Вопрос №{cardNumber}</span>
                 <span>{question}</span>
             </div>

@@ -12,16 +12,14 @@
 			-moz-border-radius: 6px !important;
 			border-radius: 6px !important;
 			height: 40px;
-			font-size: 28px;
 			z-index: 2;
+            font-size: 28px;
 		}
 	}
 
 	label {
 		width: 10%;
 		display: block;
-		float: left;
-		position: relative;
 		font-family: "Times New Roman";
 		font-size: 22px;
 		height: 36px;
@@ -32,10 +30,15 @@
 		color: #1a284f;
 
 		&:first-of-type {
-			border-radius: 5px 0 0 5px;
+            -webkit-border-radius: 6px 0 0 6px;
+            -moz-border-radius: 6px 0 0 6px;	
+            border-radius: 6px 0 0 6px;
+
 		}
 		&:last-of-type {
-			border-radius: 0 5px 5px 0;
+			-webkit-border-radius: 0 6px 6px 0;
+            -moz-border-radius: 0 6px 6px 0;	
+            border-radius: 0 6px 6px 0;
 		}
 		&:hover {
 			border: 1px solid #8e8e8e;
