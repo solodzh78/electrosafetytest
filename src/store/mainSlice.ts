@@ -11,7 +11,7 @@ export interface ICard {
 
 export interface IMainState {
     quiz: {
-        ticket: ICard[] | [];
+        ticket: ICard[];
         selectedCard: number;
     };
     status: "idle" | "loading" | "success" | "failed";

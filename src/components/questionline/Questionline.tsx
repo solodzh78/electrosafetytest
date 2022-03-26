@@ -6,7 +6,6 @@ import { Link } from "react-scroll";
 import styles from './Questionline.module.scss'
 import { ReactScrollLinkProps } from "react-scroll/modules/components/Link";
 import { RadioButton } from "../radiobutton/RadioButton";
-import { constants } from "os";
 import { ICard } from "../../store/mainSlice";
 
 export const Questionline: React.FC = function() {
@@ -15,7 +14,7 @@ export const Questionline: React.FC = function() {
     quiz && quiz.selectedCard);
 
     const isAnswerSelected = useAppSelector(({ main: { quiz: { ticket } } }: RootState) => {
-        if (ticket && ticket.length > 0) return (ticket as Array<ICard>).reduce<number[]>((akk: number[], card: ICard) => {
+        if (ticket && ticket.length > 0) return ticket.reduce<number[]>((akk: number[], card: ICard) => {
             akk.push(card.selectedAnswer);
             return akk;
         }, []);

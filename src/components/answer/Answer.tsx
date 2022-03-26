@@ -11,7 +11,7 @@ interface IAnswerProp {
 export const Answer: React.FC<IAnswerProp> = function({ cardNumber, answerNumber }: IAnswerProp) {
 
     const answerText = useAppSelector(({ main: { quiz: { ticket } } }: RootState) =>
-        ticket?.length !== 0 && ticket[cardNumber - 1].answers[answerNumber]);
+        ticket?.length !== 0 && ticket[cardNumber - 1].answers[answerNumber - 1]);
 
     const checked = useAppSelector(({ main: { quiz: { ticket } } }: RootState) =>
         ticket?.length !== 0 && ticket[cardNumber - 1].selectedAnswer === answerNumber);
