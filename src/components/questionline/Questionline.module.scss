@@ -29,6 +29,14 @@
 		font-weight: bold;
 		color: #1a284f;
 
+        &.isAnswerSelected{
+            background-color: red;
+        }
+
+        a {
+            display: block;
+        }
+
 		&:first-of-type {
             -webkit-border-radius: 6px 0 0 6px;
             -moz-border-radius: 6px 0 0 6px;	

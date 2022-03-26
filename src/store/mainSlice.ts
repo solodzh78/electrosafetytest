@@ -4,10 +4,7 @@ import { fetchLocalQuiz } from "../api/quizAPI";
 export interface ICard {
     id: number;
     question: string;
-    answers: {
-        text: string;
-        checked: boolean;
-    }[];
+    answers: string[];
     correctAnswer: number;
     selectedAnswer: number;
 }

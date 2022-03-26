@@ -8,7 +8,7 @@ import { Preloader } from '../preloarer/Preloader';
 import styles from './Quiz.module.scss'
 import { Element } from 'react-scroll';
 
-export function Quiz() {
+export const Quiz: React.FC = function() {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
@@ -20,19 +20,27 @@ export function Quiz() {
 
 	console.log("render quiz");
 
-	return (
-		<Container>
-			{status === "loading" && <Preloader />}
-			{status === "success" && 
-				<div className={styles.title}>
-					Экзамен по электробезопасности на 2 группу до 1000В
-				</div>}
-			{status === "success" && <Questionline />}
-			{status === "success" && [...new Array(10)].map((item, index) => {
-                return <Element name={`myScrollToElement${index + 1}`}><Card 
-					key={"card" + index}
-					cardNumber={index + 1} 
-                /></Element>})}
-		</Container>
+	return (<>
+        {status === "loading" && <Preloader />}
+        {status === "success" && <>
+            <div className={styles.navbar}>
+                <Container>
+                    <div className={styles.title}>
+                        Экзамен по электробезопасности на 2 группу до 1000В
+                    </div>
+                    <Questionline />
+                </Container>
+            </div>
+            <Container className={styles.quiz}>
+                {[...Array(10)].map((item, index) => 
+                    <Element 
+                        key={"card" + (index + 1)}
+                        name={`myScrollToElement_${index + 1}`}
+                    >
+                        <Card 
+                            cardNumber={index + 1} 
+                        />
+                    </Element>)}
+            </Container></>}</>
 	);
 }

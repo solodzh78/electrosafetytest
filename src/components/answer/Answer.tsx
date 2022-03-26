@@ -1,41 +1,37 @@
 import React from "react";
 import { RootState } from "../../store";
-import { useAppSelector, useGetValueFromStore } from "../../store/hooks";
+import { useAppSelector } from "../../store/hooks";
+import { RadioButton } from "../radiobutton/RadioButton";
 
 interface IAnswerProp {
     answerNumber: number,
     cardNumber: number,
 }
 
-export interface IAnswerObjectFromStore {
-    text: string;
-    checked: boolean;
-}
+export const Answer: React.FC<IAnswerProp> = function({ cardNumber, answerNumber }: IAnswerProp) {
 
-export const Answer = ({ cardNumber, answerNumber }: IAnswerProp) => {
+    const answerText = useAppSelector(({ main: { quiz: { ticket } } }: RootState) =>
+        ticket?.length !== 0 && ticket[cardNumber - 1].answers[answerNumber]);
 
-    const answerText = useGetValueFromStore("answers", cardNumber, answerNumber); 
     const checked = useAppSelector(({ main: { quiz: { ticket } } }: RootState) =>
-        ticket &&
-        ticket.length !== 0 &&
-        ticket[cardNumber - 1].selectedAnswer === answerNumber);
-    const id = useGetValueFromStore("id", cardNumber); 
+        ticket?.length !== 0 && ticket[cardNumber - 1].selectedAnswer === answerNumber);
+        
+    const id = useAppSelector(({ main: { quiz: { ticket } } }: RootState) =>
+        ticket?.length !== 0 && ticket[cardNumber - 1].id);
+
     const labelId = `card_${cardNumber}_${id}_answer_${answerNumber}`
 
     console.log("Рендер Answer: ", labelId);
 
     return (
-        <> 
-            <input
-                type="radio"
-                value={answerNumber}
-                name={`card_${cardNumber}_${id}`}
-                checked={checked}
-                id={labelId}
-                readOnly
-            />
-            <label htmlFor={labelId}>{answerText}</label>
-        </>
+        <RadioButton
+            name={`card_${cardNumber}_${id}`}
+            value={answerNumber}
+            checked={checked}
+            id={labelId}
+        >
+            {answerText}
+        </RadioButton>
     );
 }
 
