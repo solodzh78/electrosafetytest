@@ -19,7 +19,6 @@ export const Questionline: React.FC = function() {
             return akk;
         }, []);
     });
-    console.log('isAnswerSelected: ', isAnswerSelected);
 
     const dispatch = useAppDispatch();
     const dispatchSelectedCard: (cardNumber: string) => void = function (cardNumber) {

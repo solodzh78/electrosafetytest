@@ -1,6 +1,16 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchLocalQuiz } from "../api/quizAPI";
 
+const _get = "gruppa5h";
+
+enum Tests {
+    gruppa2l = "II группа по электробезопасности до 1000 В",
+    gruppa3l = "III группа по электробезопасности до 1000 В",
+    gruppa4l = "IV группа по электробезопасности до 1000 В",
+    gruppa4h = "IV группа по электробезопасности до и выше 1000 В",
+    gruppa5h = "V группа по электробезопасности до и выше 1000 В",
+}
+
 export interface ICard {
     id: number;
     question: string;
@@ -12,6 +22,9 @@ export interface ICard {
 export interface IMainState {
     quiz: {
         ticket: ICard[];
+        readyToCheck: boolean;
+        title: string;
+        id: string;
         selectedCard: number;
     };
     status: "idle" | "loading" | "success" | "failed";
@@ -43,6 +56,9 @@ interface ISetSelectedCardPayload {
 const initialState: IMainState = {
     quiz: {
         ticket: [],
+        readyToCheck: false,
+        title: Tests[_get],
+        id: _get,
         selectedCard: 1
     },
     status: "idle",
@@ -65,6 +81,9 @@ export const mainSlice = createSlice({
                 state.quiz.ticket[cardNumber - 1].selectedAnswer =
                     selectedAnswer;
             }
+            const selectedCount = state.quiz.ticket.reduce((akk, card) => akk + (card.selectedAnswer ? 1 : 0), 0);
+            if (selectedCount === 10) state.quiz.readyToCheck = true;
+
         },
         // Записывает в стор выбранный номер вопроса selectedCard
         setSelectedCard: (
@@ -88,7 +107,8 @@ export const mainSlice = createSlice({
             })
             .addCase(fetchQuiz.fulfilled, (state, action) => {
                 state.status = "success";
-                state.quiz.ticket = action.payload;
+                state.quiz.ticket = action.payload.ticket as ICard[];
+                state.quiz.id = action.payload.id;
             })
             .addCase(fetchQuiz.rejected, (state, action) => {
                 state.status = "failed";
