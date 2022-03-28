@@ -1,4 +1,5 @@
 import React from "react";
+import { useTraceUpdate } from "../../hooks/useTraceUpdate";
 import { RootState } from "../../store";
 import { useAppSelector } from "../../store/hooks";
 import { RadioButton } from "../radiobutton/RadioButton";
@@ -8,7 +9,9 @@ interface IAnswerProp {
     cardNumber: number,
 }
 
-export const Answer: React.FC<IAnswerProp> = function({ cardNumber, answerNumber }: IAnswerProp) {
+export const Answer: React.FC<IAnswerProp> = function(props) {
+
+    const { cardNumber, answerNumber }: IAnswerProp = props;
 
     const answerText = useAppSelector(({ main: { quiz: { ticket } } }: RootState) =>
         ticket?.length !== 0 && ticket[cardNumber - 1].answers[answerNumber - 1]);
@@ -22,7 +25,7 @@ export const Answer: React.FC<IAnswerProp> = function({ cardNumber, answerNumber
     const labelId = `card_${cardNumber}_${id}_answer_${answerNumber}`
 
     console.log("Рендер Answer: ", labelId);
-
+    useTraceUpdate(props);
     return (
         <RadioButton
             name={`card_${cardNumber}_${id}`}

@@ -1,7 +1,7 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import { Questionline } from '../questionline/Questionline';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchQuiz } from "../../store/mainSlice";
+import { fetchQuiz, setShowModal } from "../../store/mainSlice";
 import { Card } from '../card/Card';
 import { Container } from '../container/Container';
 import { Preloader } from '../preloarer/Preloader';
@@ -13,8 +13,6 @@ import { CheckButton } from '../checkButton/CheckButton';
 import { Check } from '../checkTicket/CheckTicket';
 
 export const Quiz: React.FC = function() {
-
-    const [showCheck, setShowCheck] = useState(false);
 
 	const dispatch = useAppDispatch();
 
@@ -28,9 +26,9 @@ export const Quiz: React.FC = function() {
 	console.log('status: ', status, status === "loading");
 
     const handleClickButton: React.MouseEventHandler<HTMLButtonElement> = () => {
-        setShowCheck(true);
+        dispatch(setShowModal({showModal: true}))
     };
-	console.log("render quiz");
+	console.log("render Quiz");
 
 	return (<>
         {status === "loading" && <Preloader />}
@@ -52,7 +50,7 @@ export const Quiz: React.FC = function() {
                         />
                     </Element>)}
                 <CheckButton onClick={handleClickButton}>Проверить</CheckButton>
-                {showCheck && <Check />}
+                <Check />
             </Container></>}</>
 	);
 }

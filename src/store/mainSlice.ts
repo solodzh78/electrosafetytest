@@ -23,6 +23,7 @@ export interface IMainState {
     quiz: {
         ticket: ICard[];
         readyToCheck: boolean;
+        showModal: boolean;
         title: string;
         id: string;
         selectedCard: number;
@@ -57,6 +58,7 @@ const initialState: IMainState = {
     quiz: {
         ticket: [],
         readyToCheck: false,
+        showModal: false,
         title: Tests[_get],
         id: _get,
         selectedCard: 1
@@ -81,9 +83,11 @@ export const mainSlice = createSlice({
                 state.quiz.ticket[cardNumber - 1].selectedAnswer =
                     selectedAnswer;
             }
-            const selectedCount = state.quiz.ticket.reduce((akk, card) => akk + (card.selectedAnswer ? 1 : 0), 0);
+            const selectedCount = state.quiz.ticket.reduce(
+                (akk, card) => akk + (card.selectedAnswer ? 1 : 0),
+                0
+            );
             if (selectedCount === 10) state.quiz.readyToCheck = true;
-
         },
         // Записывает в стор выбранный номер вопроса selectedCard
         setSelectedCard: (
@@ -93,6 +97,13 @@ export const mainSlice = createSlice({
             const { selectedCard } = action.payload;
             if (state.quiz) {
                 state.quiz.selectedCard = selectedCard;
+            }
+        },
+        // Записывает в стор состояние модального окна
+        setShowModal: (state, action: PayloadAction<{showModal: boolean}>) => {
+            const { showModal } = action.payload;
+            if (state.quiz) {
+                state.quiz.showModal = showModal;
             }
         },
     },
@@ -116,7 +127,7 @@ export const mainSlice = createSlice({
     },
 });
 
-export const { setSelectedAnswer, setSelectedCard } = mainSlice.actions;
+export const { setSelectedAnswer, setSelectedCard, setShowModal } = mainSlice.actions;
 
 // Приведенная ниже функция называется селектором и позволяет нам выбирать значение из состояния. 
 // Селекторы также могут быть определены внутри файла, где они используются, а не в файле слайса. 

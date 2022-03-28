@@ -5,20 +5,20 @@ import { setSelectedCard } from "../../store/mainSlice";
 import { Link } from "react-scroll";
 import styles from './Questionline.module.scss'
 import { ReactScrollLinkProps } from "react-scroll/modules/components/Link";
-import { RadioButton } from "../radiobutton/RadioButton";
-import { ICard } from "../../store/mainSlice";
+import { QlineButton } from "../qlineButton/QlineButton";
+// import { ICard } from "../../store/mainSlice";
+import { useTraceUpdate } from "../../hooks/useTraceUpdate";
 
 export const Questionline: React.FC = function() {
-    
+
     const selectedCard = useAppSelector(({ main: { quiz } }: RootState) => 
     quiz && quiz.selectedCard);
 
-    const isAnswerSelected = useAppSelector(({ main: { quiz: { ticket } } }: RootState) => {
-        if (ticket && ticket.length > 0) return ticket.reduce<number[]>((akk: number[], card: ICard) => {
-            akk.push(card.selectedAnswer);
-            return akk;
-        }, []);
-    });
+    // const isAnswerSelected = useAppSelector(({ main: { quiz: { ticket } } }: RootState) =>
+    //     ticket.reduce<number[]>((akk: number[], card: ICard) => {
+    //         akk.push(card.selectedAnswer);
+    //         return akk;
+    //     }, []));
 
     const dispatch = useAppDispatch();
     const dispatchSelectedCard: (cardNumber: string) => void = function (cardNumber) {
@@ -34,33 +34,38 @@ export const Questionline: React.FC = function() {
     const handleOnSetActive: (this: ReactScrollLinkProps & { children: string }) => void = function () {
         dispatchSelectedCard(this.children)};
 
-    console.log("render Q-line: ");
+    console.log("render Q-line");
+    useTraceUpdate(
+        {
+            selectedCard,
+            // isAnswerSelected,
+        });
     
 	return (
         <div className={styles["question-line"]} onChange={handleChange}>
 			{[...Array(10)].map((_item, index) => {
                 const card = index + 1;
                 
-                return <RadioButton
+                return <QlineButton
                     key={`input_card_${card}`}
                     name="questions"
                     id={`q${card}`}
                     value={card}
                     checked={selectedCard === card}
-                    className={isAnswerSelected && isAnswerSelected[index] ? styles.isAnswerSelected : ''}
+                    className={styles.isAnswerSelected}
                 >
                     {<Link
                         key={`link_${card}`}
                         to={`myScrollToElement_${card}`}
                         activeClass={styles.active}
-                        spy={true}
-                        smooth={true}
+                        spy={false}
+                        smooth={false}
                         offset={-80}
                         onSetActive={handleOnSetActive}
                     >
                         {card}
                     </Link>}
-                </RadioButton>
+                </QlineButton>
             })}
 		</div>
 	);
