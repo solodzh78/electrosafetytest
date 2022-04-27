@@ -58,9 +58,9 @@ export const Questionline: React.FC = function() {
                         key={`link_${card}`}
                         to={`myScrollToElement_${card}`}
                         activeClass={styles.active}
-                        spy={false}
+                        spy={true}
                         smooth={false}
-                        offset={-80}
+                        offset={-130}
                         onSetActive={handleOnSetActive}
                     >
                         {card}

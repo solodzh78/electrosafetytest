@@ -1,3 +1,5 @@
+@use '../../assets/variables/variables.scss' as v;
+
 /* Стиль вопроса---------------------------------------------------------------------------- */
 .question {
 	padding-left:2%;
@@ -25,7 +27,7 @@
 	input[type="radio"] {
 		display: none;
 		&:checked+label {
-			background: #0080c0;
+			background: v.$base-color;
 			color: #ffffff;
 		}
 	}
@@ -48,9 +50,9 @@
 		cursor: default;
 
 		&:hover {		
-			background-color: #0176b1 !important;
+			background-color: v.$base-color !important;
 			color:#fafafa;
-			border: 2px solid #0176b1;
+			border: 2px solid v.$base-color;
 			-webkit-box-shadow: 0 0 10px 1px #060724;
 			box-shadow: 0 0 10px 1px #060724;
 		}

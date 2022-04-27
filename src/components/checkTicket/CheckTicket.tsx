@@ -10,7 +10,7 @@ type ICheckCard = {
 }
 
 
-export const Check: React.FC = function () {
+export const CheckTicket: React.FC = function () {
 
     const dispatch = useAppDispatch();
 
@@ -31,12 +31,18 @@ export const Check: React.FC = function () {
     // Получаем из стора состояние модального окна
     const showModal = useAppSelector(({ main: { quiz } }: RootState) => quiz.showModal);
 
+    // Подсчет количества правильных ответов
     const correctAnswerCount = ticket?.reduce((akk, card) => 
     akk + (card.userAnswer === card.correctAnswer ? 1 : 0), 0);
 
+    // Результат теста
+    const success = correctAnswerCount > 7;
+
     // Текст модального окна
-    const quizResult = (correctAnswerCount && correctAnswerCount > 7) ?
-        'Вы успешно сдали экзамен' : 'Экзамен не сдан. Попробуйте ещё раз';
+    const quizResult = success ? 'Вы успешно сдали экзамен' : 'Экзамен не сдан. Попробуйте ещё раз';
+
+    // Цвет модального окна
+    const modalColor = success ? 'green' : 'red';
 
     //  Обработчик закрытия модального окна
     const handleOnClick: React.MouseEventHandler<HTMLDivElement> = function(event) {
@@ -49,7 +55,7 @@ export const Check: React.FC = function () {
 
     return <>{showModal && 
         <div className={styles.overlay} onClick={handleOnClick}>
-            <div className={styles.popup}>
+            <div className={`${styles.popup} ${success && styles.passed}`}>
                 <h2>{quizResult}</h2>
                 <p>{`Количество ошибок: ${10 - correctAnswerCount}`}</p>
                 <div className={styles["close-popup"]}></div>

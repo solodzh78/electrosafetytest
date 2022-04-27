@@ -7,10 +7,10 @@ import { Container } from '../container/Container';
 import { Preloader } from '../preloarer/Preloader';
 import styles from './Quiz.module.scss'
 import { Element } from 'react-scroll';
-import { Header } from '../header/Header';
+import { QuizHeader } from '../quizheader/QuizHeader';
 import { RootState } from '../../store';
 import { CheckButton } from '../checkButton/CheckButton';
-import { Check } from '../checkTicket/CheckTicket';
+import { CheckTicket } from '../checkTicket/CheckTicket';
 
 export const Quiz: React.FC = function() {
 
@@ -33,12 +33,12 @@ export const Quiz: React.FC = function() {
 	return (<>
         {status === "loading" && <Preloader />}
         {status === "success" && <>
-            <Header>
+            <QuizHeader>
                 <Container>
                     <div className={styles.title}>{title}</div>
                     <Questionline />
                 </Container>
-            </Header>
+            </QuizHeader>
             <Container className={styles.quiz}>
                 {[...Array(10)].map((item, index) => 
                     <Element 
@@ -50,7 +50,7 @@ export const Quiz: React.FC = function() {
                         />
                     </Element>)}
                 <CheckButton onClick={handleClickButton}>Проверить</CheckButton>
-                <Check />
+                <CheckTicket />
             </Container></>}</>
 	);
 }

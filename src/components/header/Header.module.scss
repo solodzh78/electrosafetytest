@@ -1,6 +1,24 @@
 .header {
-    position: fixed;
+    position: sticky;
+    // display: flex;
     z-index: 10;
     background-color: whitesmoke;
     width: 100%;
+}
+
+.nav {
+    // position: fixed;
+    display: flex;
+    z-index: 10;
+    background-color: whitesmoke;
+    align-items: center;
+    // width: 100%;
+    .navLink {
+        margin-right: 80px;
+        text-decoration: none;
+
+        .logoImg {
+            width: 40px;
+        }
+    }
 }
