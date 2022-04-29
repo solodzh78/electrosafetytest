@@ -3,7 +3,7 @@ import { Container } from '../components/container/Container'
 
 export const About: React.FC = function () {
     return (
-        <Container>
+        <Container style={{paddingTop: '55px'}}>
             <div>
                 <h1>
                     About

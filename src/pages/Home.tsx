@@ -3,7 +3,7 @@ import { Container } from '../components/container/Container'
 
 function Home() {
     return (
-        <Container>
+        <Container style={{paddingTop: '55px'}}>
             <div>
                 <h1>
                     Home

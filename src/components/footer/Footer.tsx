@@ -6,13 +6,13 @@ import styles from './Footer.module.scss';
 
 export const Footer: React.FC = function() {
     return (
-        <div className={styles.footer}>
+        <footer className={styles.footer}>
             <Container>
                 <h1>Footer</h1>
                 <Link to='/'>Root</Link>
                 <Link to='/home'>Home</Link>
                 <Link to='/about'>About</Link>
             </Container>
-        </div>
+        </footer>
         )
 };
