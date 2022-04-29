@@ -34,9 +34,9 @@ export interface IMainState {
 
 export const fetchQuiz = createAsyncThunk(
     "main/fetchQuiz",
-    async (_, { rejectWithValue }) => {
+    async (testId: string, { rejectWithValue }) => {
         try {
-            const res = await fetchLocalQuiz();
+            const res = await fetchLocalQuiz(testId);
             const data = res.data;
             return data;
         } catch (error) {
@@ -120,6 +120,8 @@ export const mainSlice = createSlice({
                 state.status = "success";
                 state.quiz.ticket = action.payload.ticket as ICard[];
                 state.quiz.id = action.payload.id;
+                state.quiz.title = Tests[_get];
+
             })
             .addCase(fetchQuiz.rejected, (state, action) => {
                 state.status = "failed";

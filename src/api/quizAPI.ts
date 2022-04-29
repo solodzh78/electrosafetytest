@@ -6,7 +6,7 @@ interface IData {
     ticket: Omit<ICard, 'selectedAnswer'>[];
 }
 
-export const fetchLocalQuiz: () => Promise<{data: IData}> = function () {
+export const fetchLocalQuiz: (id: string) => Promise<{data: IData}> = function (id) {
     return new Promise<{ data: IData }>((resolve) =>
         setTimeout(
             () =>

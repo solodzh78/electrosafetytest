@@ -13,7 +13,9 @@ interface IProps {
 export const QlineButton: React.FC<IProps> = function ({ name, id, value, checked, className, children  }) {
     const isAnswerSelected = useAppSelector(({main: { quiz }}: RootState) => 
         !!quiz.ticket[value - 1].selectedAnswer);
-    return <RadioButton 
+        
+    return (
+        <RadioButton 
             name={name}
             id={id}
             value={value}
@@ -21,7 +23,7 @@ export const QlineButton: React.FC<IProps> = function ({ name, id, value, checke
             className={isAnswerSelected ? className : ''}
         >
             {children}
-        </RadioButton>
+        </RadioButton>)
 
 }
     // <>

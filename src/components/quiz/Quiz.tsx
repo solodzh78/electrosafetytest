@@ -11,14 +11,16 @@ import { QuizHeader } from '../quizheader/QuizHeader';
 import { RootState } from '../../store';
 import { CheckButton } from '../checkButton/CheckButton';
 import { CheckTicket } from '../checkTicket/CheckTicket';
+import { useParams } from 'react-router-dom';
 
 export const Quiz: React.FC = function() {
 
 	const dispatch = useAppDispatch();
+    const id = useParams().id || '';
 
 	useEffect(() => {
-		dispatch(fetchQuiz());
-	}, [dispatch]);
+		dispatch(fetchQuiz(id));
+	}, [dispatch, id]);
 
     const title = useAppSelector(({ main: { quiz } }: RootState) =>
         quiz && quiz.title);

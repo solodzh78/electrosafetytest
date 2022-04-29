@@ -12,8 +12,10 @@ export const Header: React.FC = function() {
                         <Link className={styles.navLink} to='/'>
                             <img className={styles.logoImg} src={Logo} alt='Logo'/>
                         </Link>
-                        <Link className={styles.navLink} to='/home'>Home</Link>
-                        <Link className={styles.navLink} to='/about'>About</Link>
+                        <Link className={styles.navLink} to='/home'>Главная</Link>
+                        <Link className={styles.navLink} to='/tests'>Тесты</Link>
+                        <Link className={styles.navLink} to='/docs'>Документы</Link>
+                        <Link className={styles.navLink} to='/about'>О нас</Link>
                     </nav>
                 </Container>
             </header>
