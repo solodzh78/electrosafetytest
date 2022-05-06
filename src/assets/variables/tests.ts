@@ -20,3 +20,22 @@ export const tests = [
         href: "l2",
     },
 ];
+
+export const isValidate = (id: string) => {
+
+    const data = {
+        isValid: false,
+        title: '',
+        href: ''
+    };
+
+    tests.forEach((elem) => {
+        if (elem.href === id) {
+            data.isValid = true;
+            data.title = elem.title;
+            data.href = elem.href
+        }
+    });
+
+    return data;
+}

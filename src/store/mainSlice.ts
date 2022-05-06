@@ -1,15 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchLocalQuiz } from "../api/quizAPI";
-
-const _get = "gruppa5h";
-
-enum Tests {
-    gruppa2l = "II группа по электробезопасности до 1000 В",
-    gruppa3l = "III группа по электробезопасности до 1000 В",
-    gruppa4l = "IV группа по электробезопасности до 1000 В",
-    gruppa4h = "IV группа по электробезопасности до и выше 1000 В",
-    gruppa5h = "V группа по электробезопасности до и выше 1000 В",
-}
+import { fetchServerQuiz as fetchLocalQuiz } from "../api/quizAPI_PHP";
 
 export interface ICard {
     id: number;
@@ -59,8 +49,8 @@ const initialState: IMainState = {
         ticket: [],
         readyToCheck: false,
         showModal: false,
-        title: Tests[_get],
-        id: _get,
+        title: '',
+        id: '',
         selectedCard: 1
     },
     status: "idle",
@@ -120,7 +110,8 @@ export const mainSlice = createSlice({
                 state.status = "success";
                 state.quiz.ticket = action.payload.ticket as ICard[];
                 state.quiz.id = action.payload.id;
-                state.quiz.title = Tests[_get];
+                state.quiz.title = action.payload.title;
+                console.log('payload:', action.payload);
 
             })
             .addCase(fetchQuiz.rejected, (state, action) => {

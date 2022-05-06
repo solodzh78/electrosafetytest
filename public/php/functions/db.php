@@ -1,5 +1,5 @@
 <?php
-$servername = "127.0.0.1:80";
+$servername = "https://solodzh1.000webhostapp.com/";
 $database = "cg96626_000";
 $username = "root";
 $password = "Ss238433";

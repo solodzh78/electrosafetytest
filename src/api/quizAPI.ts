@@ -1,18 +1,24 @@
 import { ICard } from "../store/mainSlice";
+import { isValidate } from "../assets/variables/tests";
 
 // A mock function to mimic making an async request for data
 interface IData {
     id: string;
+    title: string;
     ticket: Omit<ICard, 'selectedAnswer'>[];
 }
 
 export const fetchLocalQuiz: (id: string) => Promise<{data: IData}> = function (id) {
+    const { isValid, href, title } = isValidate(id);
+    if (!isValid) throw new Error("Не найдено соответствия данной ссылке");
+    
     return new Promise<{ data: IData }>((resolve) =>
         setTimeout(
             () =>
                 resolve({
                     data: {
-                        id: "gruppa5h",
+                        id: href,
+                        title: title,
                         ticket: [
                             {
                                 id: 64321,
