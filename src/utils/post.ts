@@ -9,8 +9,10 @@ const objectToFormData = function (data: Data) {
     return formData;
 };
 
+
 //Отправка POST запроса
 export const postData = async function (url: string, data: Data) {
+
     console.log("data: ", data);
     try {
         const response = await fetch(url, {
