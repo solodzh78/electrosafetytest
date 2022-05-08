@@ -116,6 +116,7 @@ export const mainSlice = createSlice({
             })
             .addCase(fetchQuiz.rejected, (state, action) => {
                 state.status = "failed";
+                
             });
     },
 });
