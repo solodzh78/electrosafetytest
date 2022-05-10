@@ -1,0 +1,1 @@
+export const dbURL = "http://temp-bd.ru/php/getQuiz.php";
