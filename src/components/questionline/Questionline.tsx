@@ -59,7 +59,7 @@ export const Questionline: React.FC = function() {
                         to={`myScrollToElement_${card}`}
                         activeClass={styles.active}
                         spy={true}
-                        smooth={false}
+                        smooth={true}
                         offset={-130}
                         onSetActive={handleOnSetActive}
                     >

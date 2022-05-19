@@ -41,8 +41,8 @@ export const CheckTicket: React.FC = function () {
     // Текст модального окна
     const quizResult = success ? 'Вы успешно сдали экзамен' : 'Экзамен не сдан. Попробуйте ещё раз';
 
-    // Цвет модального окна
-    const modalColor = success ? 'green' : 'red';
+    // // Цвет модального окна
+    // const modalColor = success ? 'green' : 'red';
 
     //  Обработчик закрытия модального окна
     const handleOnClick: React.MouseEventHandler<HTMLDivElement> = function(event) {

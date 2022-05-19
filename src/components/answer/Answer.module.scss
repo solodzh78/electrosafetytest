@@ -1,0 +1,9 @@
+@use '../../assets/variables/variables.scss' as v;
+
+.passed {
+    background-color: v.$test-passed-color !important;
+}
+
+.failed {
+    background-color: v.$test-failed-color !important;
+}

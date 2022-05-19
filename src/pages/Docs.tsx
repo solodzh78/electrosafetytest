@@ -3,7 +3,7 @@ import { Container } from '../components/container/Container'
 
 function Docs() {
     return (
-        <Container style={{paddingTop: '55px'}}>
+        <Container style={{ paddingTop: '55px' }} className={'main'}>
             <div>
                 <h1>
                     Список документов

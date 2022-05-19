@@ -17,7 +17,10 @@ export const Card: React.FC<ICardProps> = function({ cardNumber }) {
     ticket?.length !== 0 && ticket[cardNumber - 1].question);
     const answersCount = useAppSelector(({ main: { quiz: { ticket } } }: RootState) => 
     ticket?.length !== 0 && ticket[cardNumber - 1].answers.length);
-    
+
+    console.log(useAppSelector(({ main: { quiz: { ticket } } }: RootState) =>
+        ticket?.length !== 0 && ticket[cardNumber - 1].answers));
+
     const dispatch = useAppDispatch();
     const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(

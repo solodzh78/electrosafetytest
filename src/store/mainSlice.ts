@@ -17,6 +17,7 @@ export interface IMainState {
         title: string;
         id: string;
         selectedCard: number;
+        isTesting: boolean;
     };
     status: "idle" | "loading" | "success" | "failed";
     error: [];
@@ -51,7 +52,8 @@ const initialState: IMainState = {
         showModal: false,
         title: '',
         id: '',
-        selectedCard: 1
+        selectedCard: 1,
+        isTesting: true
     },
     status: "idle",
     error: [],
@@ -90,10 +92,23 @@ export const mainSlice = createSlice({
             }
         },
         // Записывает в стор состояние модального окна
-        setShowModal: (state, action: PayloadAction<{showModal: boolean}>) => {
+        setShowModal: (
+            state,
+            action: PayloadAction<{ showModal: boolean }>
+        ) => {
             const { showModal } = action.payload;
             if (state.quiz) {
                 state.quiz.showModal = showModal;
+            }
+        },
+        // Записывает в стор состояние режима тестирования
+        setIsTesting: (
+            state,
+            action: PayloadAction<{ isTesting: boolean }>
+        ) => {
+            const { isTesting } = action.payload;
+            if (state.quiz) {
+                state.quiz.isTesting = isTesting;
             }
         },
     },
@@ -111,17 +126,21 @@ export const mainSlice = createSlice({
                 state.quiz.ticket = action.payload.ticket as ICard[];
                 state.quiz.id = action.payload.id;
                 state.quiz.title = action.payload.title;
-                console.log('payload:', action.payload);
-
+                state.quiz.readyToCheck = false;
+                state.quiz.isTesting = true;
+                console.log("payload:", action.payload);
             })
             .addCase(fetchQuiz.rejected, (state, action) => {
                 state.status = "failed";
-                
             });
     },
 });
 
-export const { setSelectedAnswer, setSelectedCard, setShowModal } = mainSlice.actions;
+export const { 
+    setSelectedAnswer, 
+    setSelectedCard, 
+    setShowModal, 
+    setIsTesting } = mainSlice.actions;
 
 // Приведенная ниже функция называется селектором и позволяет нам выбирать значение из состояния. 
 // Селекторы также могут быть определены внутри файла, где они используются, а не в файле слайса. 

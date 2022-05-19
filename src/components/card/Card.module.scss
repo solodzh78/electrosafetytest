@@ -1,5 +1,10 @@
 @use '../../assets/variables/variables.scss' as v;
 
+:root {
+    --test-failed-color: v.$test-failed-color;
+    --test-passed-color: v.$test-passed-color;
+}
+
 /* Стиль вопроса---------------------------------------------------------------------------- */
 .question {
 	padding-left:2%;
@@ -23,6 +28,10 @@
 	margin: 0 auto;
 	margin-top: 2%;
 	margin-bottom: 2%;
+
+    label {
+        white-space: pre-wrap;
+    }
 	
 	input[type="radio"] {
 		display: none;
@@ -50,7 +59,7 @@
 		cursor: default;
 
 		&:hover {		
-			background-color: v.$base-color !important;
+			background-color: v.$base-color;
 			color:#fafafa;
 			border: 2px solid v.$base-color;
 			-webkit-box-shadow: 0 0 10px 1px #060724;
@@ -59,3 +68,4 @@
 	}
 
 }
+

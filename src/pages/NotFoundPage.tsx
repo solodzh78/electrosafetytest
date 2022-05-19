@@ -4,7 +4,7 @@ import { Container } from '../components/container/Container'
 function NotFoundPage() {
     return (
 		<Container>
-			<div  style={{paddingTop: '55px'}}>
+            <div style={{ paddingTop: '55px' }} className={'main'}>
 				<h1>
 					Error 404. Page not found
 				</h1>

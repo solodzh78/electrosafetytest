@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
-import { Questionline } from '../questionline/Questionline';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchQuiz, setShowModal } from "../../store/mainSlice";
+import { fetchQuiz, setShowModal, setIsTesting } from "../../store/mainSlice";
 import { Card } from '../card/Card';
 import { Container } from '../container/Container';
 import { Preloader } from '../preloarer/Preloader';
 import styles from './Quiz.module.scss'
 import { Element } from 'react-scroll';
-import { QuizHeader } from '../quizheader/QuizHeader';
 import { RootState } from '../../store';
 import { CheckButton } from '../checkButton/CheckButton';
 import { CheckTicket } from '../checkTicket/CheckTicket';
 import { useParams } from 'react-router-dom';
+import { Questionline } from '../questionline/Questionline';
 
 export const Quiz: React.FC = function() {
 
@@ -28,19 +27,22 @@ export const Quiz: React.FC = function() {
 	console.log('status: ', status, status === "loading");
 
     const handleClickButton: React.MouseEventHandler<HTMLButtonElement> = () => {
-        dispatch(setShowModal({showModal: true}))
+        dispatch(setShowModal({showModal: true}));
+        dispatch(setIsTesting({isTesting: false}));
     };
 	console.log("render Quiz");
 
 	return (<>
         {status === "loading" && <Preloader />}
         {status === "success" && <>
-            <QuizHeader>
+            <div className={styles.header}>
                 <Container>
-                    <div className={styles.title}>{title}</div>
+                    <div className={styles.title}>
+                        {title}
+                    </div>
                     <Questionline />
                 </Container>
-            </QuizHeader>
+            </div>
             <Container className={styles.quiz}>
                 {[...Array(10)].map((item, index) => 
                     <Element 

@@ -6,7 +6,7 @@ export const Container: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props)
     return(
 	<div 
 		style={props.style || {}} 
-		className={`${styles.container} ${props.className || ''}`}
+            className={`${styles.container} ${props.className === 'main'? styles.main: props.className || ''}`}
 	>
 		{props.children}
 	</div>

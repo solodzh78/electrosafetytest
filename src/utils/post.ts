@@ -19,7 +19,8 @@ export const postData = async function (url: string, data: Data) {
             method: "POST",
             body: objectToFormData(data),
         });
-        return await response.json();
+        const temp = await response.text();
+        return  JSON.parse(temp);
     } catch (error) {
         console.error(error);
     }

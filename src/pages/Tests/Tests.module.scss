@@ -1,0 +1,38 @@
+@use '../../assets/variables/variables.scss' as v;
+
+.tests {
+    ul {
+        padding-inline-start: 0;
+        li {
+            list-style-type: none;
+            a {
+                text-decoration: none;
+                .list-item {	
+                    font-size: 20px;
+                    font-family: "Segoe UI", Arial, sans-serif;
+                    display: block;	
+                    position: relative;
+                    margin: 1% auto;
+                    padding:4%;
+                    padding-top: 2%;
+                    padding-bottom: 2%;
+                    background-color: #A5D0E7;
+                    color: #1a284f;
+                    -moz-border-radius: 5px;
+                    -webkit-border-radius: 5px;
+                    border-radius: 5px;
+                    border: 2px solid transparent;
+                    text-decoration: none;
+            
+                    &:hover {		
+                        background-color: v.$base-color !important;
+                        color:#fafafa;
+                        border: 2px solid v.$base-color;
+                        -webkit-box-shadow: 0 0 10px 1px #060724;
+                        box-shadow: 0 0 10px 1px #060724;
+                    }
+                }
+            }
+        }
+    }
+}
