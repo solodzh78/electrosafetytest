@@ -128,7 +128,6 @@ export const mainSlice = createSlice({
                 state.quiz.title = action.payload.title;
                 state.quiz.readyToCheck = false;
                 state.quiz.isTesting = true;
-                console.log("payload:", action.payload);
             })
             .addCase(fetchQuiz.rejected, (state, action) => {
                 state.status = "failed";

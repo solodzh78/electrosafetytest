@@ -6,16 +6,16 @@ import styles from './Tests.module.scss';
 
 function Tests() {
     return (
-        <Container style={{ paddingTop: '55px' }} className={'main'}>
+        <Container style={{ paddingTop: '55px' }} className={ 'main' }>
             <div className={styles.tests}>
-                <h1>
+                <h1 className={styles.tests__title}>
                     Список тестов
                 </h1>
-                <ul>
+                <ul className={styles.tests__list}>
                     {tests && tests.map(({title, href}) => 
-                        <li key={href}>
-                            <Link to={`/quiz/${href}`} >
-                                <div className={styles['list-item']}>
+                        <li className={styles['tests__list-item']} key={href}>
+                            <Link className={styles.tests__link} to={`/quiz/${href}`} >
+                                <div className={styles.tests__test}>
                                     {title}
                                 </div>
                             </Link>

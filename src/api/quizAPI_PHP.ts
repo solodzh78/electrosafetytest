@@ -15,10 +15,6 @@ export const fetchServerQuiz: (id: string) => Promise<{data: IData}> = async fun
     if (!isValid) throw new Error("Не найдено соответствия данной ссылке");
 
     const card = await postData(dbURL, {gruppa: href});
-    // card.array.forEach((elem: { [x: string]: string; }) => {
-    //     elem["answers"] = JSON.parse(elem["answers"]);
-    // });
-    console.log(card[0].answers[0]);
     const quiz = {
         data: {
             id: href,

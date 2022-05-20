@@ -1,71 +1,67 @@
 @use '../../assets/variables/variables.scss' as v;
 
-:root {
-    --test-failed-color: v.$test-failed-color;
-    --test-passed-color: v.$test-passed-color;
-}
-
 /* Стиль вопроса---------------------------------------------------------------------------- */
-.question {
+.card__question {
 	padding-left:2%;
 	padding-right:2%;
 	font-weight: bold;
+}
 
-	.number {
-		align-items: left;
-	}
-
-	span {
-		display: block;
-		text-transform: uppercase;
-		font-size: 20px;
-	}	
+.card__question-number {
+    align-items: left;
+}
+.card__question-text, .card__question-number {
+    display: block;
+    text-transform: uppercase;
+    font-size: 1.25rem;
 }
 
 /* Стили ответов----------------------------------------------------------------------------*/
-.answers {	
-	// max-width: 720px;
+.card__answers {	
 	margin: 0 auto;
 	margin-top: 2%;
 	margin-bottom: 2%;
-
-    label {
-        white-space: pre-wrap;
-    }
-	
-	input[type="radio"] {
-		display: none;
-		&:checked+label {
-			background: v.$base-color;
-			color: #ffffff;
-		}
-	}
-
-	label {	
-		font-size: 20px;
-		font-family: "Segoe UI", Arial, sans-serif;
-		display: block;	
-		position: relative;
-		margin: 1% auto;
-		padding:4%;
-		padding-top: 2%;
-		padding-bottom: 2%;
-		background-color: #A5D0E7;
-		color: #1a284f;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
-		border-radius: 5px;
-		border: 2px solid transparent;
-		cursor: default;
-
-		&:hover {		
-			background-color: v.$base-color;
-			color:#fafafa;
-			border: 2px solid v.$base-color;
-			-webkit-box-shadow: 0 0 10px 1px #060724;
-			box-shadow: 0 0 10px 1px #060724;
-		}
-	}
-
 }
+.answer {
+    opacity: 1;
+}
+.answer__input {
+    display: none;
+    &:checked + .answer__label {
+        background: v.$base-color;
+        color: #ffffff;
+        &.passed {
+            background-color: v.$test-passed-color;
+        }
+        &.failed {
+            background-color: v.$test-failed-color;
+        }
+    }
+}
+.answer__label {
+    white-space: pre-wrap;
+    font-size: 1.25rem;
+    font-family: "Segoe UI", Arial, sans-serif;
+    display: block;	
+    position: relative;
+    margin: 1% auto;
+    padding:4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: v.$answer-background-color;
+    color: v.$answer-color;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    cursor: default;
 
+    
+    &:hover {		
+        background-color: v.$base-color;
+        color:#fafafa;
+        border: 2px solid v.$base-color;
+        -webkit-box-shadow: 0 0 10px 1px #060724;
+        box-shadow: 0 0 10px 1px #060724;
+    }
+}

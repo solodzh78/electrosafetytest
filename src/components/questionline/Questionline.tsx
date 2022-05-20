@@ -6,19 +6,12 @@ import { Link } from "react-scroll";
 import styles from './Questionline.module.scss'
 import { ReactScrollLinkProps } from "react-scroll/modules/components/Link";
 import { QlineButton } from "../qlineButton/QlineButton";
-// import { ICard } from "../../store/mainSlice";
 import { useTraceUpdate } from "../../hooks/useTraceUpdate";
 
 export const Questionline: React.FC = function() {
 
     const selectedCard = useAppSelector(({ main: { quiz } }: RootState) => 
     quiz && quiz.selectedCard);
-
-    // const isAnswerSelected = useAppSelector(({ main: { quiz: { ticket } } }: RootState) =>
-    //     ticket.reduce<number[]>((akk: number[], card: ICard) => {
-    //         akk.push(card.selectedAnswer);
-    //         return akk;
-    //     }, []));
 
     const dispatch = useAppDispatch();
     const dispatchSelectedCard: (cardNumber: string) => void = function (cardNumber) {
@@ -38,7 +31,6 @@ export const Questionline: React.FC = function() {
     useTraceUpdate(
         {
             selectedCard,
-            // isAnswerSelected,
         });
     
 	return (
@@ -52,12 +44,12 @@ export const Questionline: React.FC = function() {
                     id={`q${card}`}
                     value={card}
                     checked={selectedCard === card}
-                    className={styles.isAnswerSelected}
+                    classNames={styles}
                 >
                     {<Link
                         key={`link_${card}`}
                         to={`myScrollToElement_${card}`}
-                        activeClass={styles.active}
+                        activeClass={'active'}
                         spy={true}
                         smooth={true}
                         offset={-130}

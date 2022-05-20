@@ -1,44 +1,50 @@
+@use '../../assets/variables/variables.scss' as v;
+
 .header {
     position: fixed;
-    // display: flex;
     z-index: 10;
-    background-color: #0080c0;
+    background-color: v.$base-color;
     width: 100%;
-
-    .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items:center;
-        .nav_left {
-            display: flex;
-            z-index: 10;
-            align-items: center;
-            .navLink {
-                margin-right: 60px;
-                text-decoration: none;
-                color: white;
-                font-size: 20px;
-                @media (max-width: 768px) {
-                    margin-right: 20px;
-                }
-        
-                .logoImg {
-                    width: 40px;
-                }
-            }
-        }
-        .nav_right {
-            a {
-                img {
-                    width: 30px;
-                    color:chartreuse;
-                }
-                .use1 {
-                    width: 30px;
-                    height: 30px;
-                    fill: red;
-                }
-            }
-        }
+}
+.header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.header__left {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+.logo {
+    opacity: 1;
+}
+.logo__img {
+    width: 2.5rem;
+}
+.nav-menu {
+    display: flex;
+    z-index: 10;
+    align-items: center;
+}
+.nav-menu__link {
+    margin-right: 3.75rem;
+    text-decoration: none;
+    color: white;
+    font-size: 1.25rem;
+    @media (max-width: 768px) {
+        margin-right: 20px;
     }
+    &:hover {
+        text-decoration: underline;
+    }
+}
+.header__right {
+}
+.user {
+}
+.user__link {
+}
+.user__img {
+    width: 1.875rem;
 }

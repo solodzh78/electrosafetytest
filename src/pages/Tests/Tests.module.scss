@@ -1,38 +1,41 @@
 @use '../../assets/variables/variables.scss' as v;
 
 .tests {
-    ul {
-        padding-inline-start: 0;
-        li {
-            list-style-type: none;
-            a {
-                text-decoration: none;
-                .list-item {	
-                    font-size: 20px;
-                    font-family: "Segoe UI", Arial, sans-serif;
-                    display: block;	
-                    position: relative;
-                    margin: 1% auto;
-                    padding:4%;
-                    padding-top: 2%;
-                    padding-bottom: 2%;
-                    background-color: #A5D0E7;
-                    color: #1a284f;
-                    -moz-border-radius: 5px;
-                    -webkit-border-radius: 5px;
-                    border-radius: 5px;
-                    border: 2px solid transparent;
-                    text-decoration: none;
-            
-                    &:hover {		
-                        background-color: v.$base-color !important;
-                        color:#fafafa;
-                        border: 2px solid v.$base-color;
-                        -webkit-box-shadow: 0 0 10px 1px #060724;
-                        box-shadow: 0 0 10px 1px #060724;
-                    }
-                }
-            }
-        }
+}
+.tests__title {
+
+}
+.tests__list {
+    padding-inline-start: 0;
+}
+.tests__link {
+    text-decoration: none;
+}
+.tests__list-item {
+    list-style-type: none;
+}
+.tests__test{
+    font-size: 1.25rem;
+    font-family: v.$tests-font-family;
+    display: block;	
+    position: relative;
+    margin: 1% auto;
+    padding:4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: v.$answer-background-color;
+    color: #1a284f;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    text-decoration: none;
+
+    &:hover {		
+        color:#fafafa;
+        background-color: v.$base-color;
+        border: 2px solid v.$base-color;
+        -webkit-box-shadow: 0 0 10px 1px #060724;
+        box-shadow: 0 0 10px 1px #060724;
     }
 }

@@ -9,22 +9,28 @@ export const Header: React.FC = function() {
     return (
             <header className={styles.header}>
                 <Container>
-                    <nav className={styles.nav}>
-                        <div className={styles.nav_left}>
-                            <Link className={styles.navLink} to='/'>
-                                <img className={styles.logoImg} src={Logo} alt='Logo'/>
+                <div className={styles.header__wrapper}>
+                    <div className={styles.header__left}>
+                        <div className={styles.logo}>
+                            <Link className={styles.logo__link} to='/'>
+                                <img className={styles.logo__img} src={Logo} alt='Logo'/>
                             </Link>
-                            <Link className={styles.navLink} to='/'>Главная</Link>
-                            <Link className={styles.navLink} to='/tests'>Тесты</Link>
-                            <Link className={styles.navLink} to='/docs'>Документы</Link>
-                        <Link className={styles.navLink} to='/about'>О&nbsp;нас</Link>
                         </div>
-                    <div className={styles.nav_right}>
-                            <a href='/#'>
-                                <img src={Sign} alt='sign'/>
+                        <nav className={styles['nav-menu']}>
+                            <Link className={styles['nav-menu__link']} to='/'>Главная</Link>
+                            <Link className={styles['nav-menu__link']} to='/tests'>Тесты</Link>
+                            <Link className={styles['nav-menu__link']} to='/docs'>Документы</Link>
+                            <Link className={styles['nav-menu__link']} to='/about'>О&nbsp;нас</Link>
+                        </nav>
+                    </div>
+                    <div className={styles.header__right}>
+                        <div className={styles.user}>
+                            <a className={styles.user__link} href='/#'>
+                                <img className={styles.user__img} src={Sign} alt='sign'/>
                             </a>
                         </div>
-                    </nav>
+                    </div>
+                </div>
                 </Container>
             </header>
         )

@@ -24,7 +24,6 @@ export const Quiz: React.FC = function() {
     const title = useAppSelector(({ main: { quiz } }: RootState) =>
         quiz && quiz.title);
 	const status = useAppSelector(state => state.main.status)
-	console.log('status: ', status, status === "loading");
 
     const handleClickButton: React.MouseEventHandler<HTMLButtonElement> = () => {
         dispatch(setShowModal({showModal: true}));
@@ -49,9 +48,7 @@ export const Quiz: React.FC = function() {
                         key={"card" + (index + 1)}
                         name={`myScrollToElement_${index + 1}`}
                     >
-                        <Card 
-                            cardNumber={index + 1} 
-                        />
+                        <Card cardNumber={index + 1} />
                     </Element>)}
                 <CheckButton onClick={handleClickButton}>Проверить</CheckButton>
                 <CheckTicket />

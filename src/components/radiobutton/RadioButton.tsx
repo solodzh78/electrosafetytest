@@ -1,27 +1,26 @@
-
 interface IProps {
     name: string;
     id: string;
     value: number;
     checked: boolean;
-    className?: string;
+    classButtonInput?: string;
+    classButtonLabel?: string;
     style?: React.CSSProperties;
 }
-
 
 export const RadioButton: React.FC<IProps> = function ({ 
     name, 
     id, 
     value, 
     checked, 
-    className, 
+    classButtonInput, 
+    classButtonLabel, 
     children, 
     style }) {
         
-        const onLoad: (e: any)=>void = e => e.target.innerText = children;
-        
-        return <>
+    return <>
         <input
+            className={classButtonInput}
             type="radio"
             readOnly
             name={name}
@@ -29,9 +28,8 @@ export const RadioButton: React.FC<IProps> = function ({
             value={value}
             checked={checked}
         />
-            <label htmlFor={id} className={className} onLoad={onLoad} >
-                {children}
-            </label>
-        </>
-    
+        <label className={classButtonLabel} htmlFor={id}>
+            {children}
+        </label>
+    </>
 }
