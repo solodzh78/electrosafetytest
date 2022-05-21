@@ -7,6 +7,7 @@ import styles from './Questionline.module.scss'
 import { ReactScrollLinkProps } from "react-scroll/modules/components/Link";
 import { QlineButton } from "../qlineButton/QlineButton";
 import { useTraceUpdate } from "../../hooks/useTraceUpdate";
+import { smoothScroll } from "../../assets/variables/options";
 
 export const Questionline: React.FC = function() {
 
@@ -51,7 +52,7 @@ export const Questionline: React.FC = function() {
                         to={`myScrollToElement_${card}`}
                         activeClass={'active'}
                         spy={true}
-                        smooth={true}
+                        smooth={smoothScroll}
                         offset={-130}
                         onSetActive={handleOnSetActive}
                     >

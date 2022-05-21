@@ -7,7 +7,7 @@ import About from './pages/About';
 import Docs from './pages/Docs';
 import Home from './pages/Home';
 import NotFoundPage from './pages/NotFoundPage';
-import Tests from './pages/Tests/Tests';
+import Tests from './pages/Tests';
 
 import './App.css';
 

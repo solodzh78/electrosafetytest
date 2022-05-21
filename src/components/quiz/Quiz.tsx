@@ -11,6 +11,8 @@ import { CheckButton } from '../checkButton/CheckButton';
 import { CheckTicket } from '../checkTicket/CheckTicket';
 import { useParams } from 'react-router-dom';
 import { Questionline } from '../questionline/Questionline';
+import { Header } from '../header/Header';
+import { Footer } from '../footer/Footer';
 
 export const Quiz: React.FC = function() {
 
@@ -33,7 +35,8 @@ export const Quiz: React.FC = function() {
 
 	return (<>
         {status === "loading" && <Preloader />}
-        {status === "success" && <>
+        {status === "success" && 
+        <>
             <div className={styles.header}>
                 <Container>
                     <div className={styles.title}>
@@ -51,7 +54,8 @@ export const Quiz: React.FC = function() {
                         <Card cardNumber={index + 1} />
                     </Element>)}
                 <CheckButton onClick={handleClickButton}>Проверить</CheckButton>
-                <CheckTicket />
-            </Container></>}</>
+            </Container>
+        </>}
+    </>
 	);
 }

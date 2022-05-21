@@ -1,4 +1,4 @@
-@use '../../assets/variables/variables.scss' as v;
+@import '../../assets/variables/variables.scss';
 
 .question-line {
 	display: flex;
@@ -9,7 +9,7 @@
 	input[type="radio"] {
 		display: none;
 		&:checked + label {
-			border: 3px solid v.$base-color;
+			border: 3px solid $base-color;
 			-webkit-border-radius: 6px !important;
 			-moz-border-radius: 6px !important;
 			border-radius: 6px !important;
@@ -67,9 +67,9 @@
 color: red;
 }
 .--passed {
-    background-color: v.$test-passed-color !important;
+    background-color: $test-passed-color !important;
 }
 
 .--failed {
-    background-color: v.$test-failed-color !important;
+    background-color: $test-failed-color !important;
 }

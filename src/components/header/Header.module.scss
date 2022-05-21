@@ -1,9 +1,9 @@
-@use '../../assets/variables/variables.scss' as v;
+@import '../../assets/variables/variables.scss';
 
 .header {
     position: fixed;
     z-index: 10;
-    background-color: v.$base-color;
+    background-color: $base-color;
     width: 100%;
 }
 .header__wrapper {
