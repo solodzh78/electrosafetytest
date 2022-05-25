@@ -1,7 +1,14 @@
 import React from "react";
 import styles from "./Container.module.scss";
 
-export const Container: React.FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
+interface Prop {
+	children?: React.ReactNode;
+	className?: string;
+	style?: React.CSSProperties | undefined;
+	ref?: React.LegacyRef<HTMLDivElement> | undefined;
+}
+
+export const Container: React.FC<Prop> = (props) => {
     console.log('render Container');
     return(
 	<div 

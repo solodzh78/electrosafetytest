@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchQuiz, setShowModal, setIsTesting } from "../../store/mainSlice";
 import { Card } from '../card/Card';
@@ -8,14 +8,14 @@ import styles from './Quiz.module.scss'
 import { Element } from 'react-scroll';
 import { RootState } from '../../store';
 import { CheckButton } from '../checkButton/CheckButton';
-import { CheckTicket } from '../checkTicket/CheckTicket';
 import { useParams } from 'react-router-dom';
 import { Questionline } from '../questionline/Questionline';
-import { Header } from '../header/Header';
-import { Footer } from '../footer/Footer';
+import ComponentWithDimensions from '../componentWithDimensions';
 
-export const Quiz: React.FC = function() {
+export const Quiz: React.FC = function(props) {
 
+	const quizAnswersRef = useRef(null);
+	const [paddingTop, setPaddingTop] = useState('130px')
 	const dispatch = useAppDispatch();
     const id = useParams().id || '';
 
@@ -31,21 +31,30 @@ export const Quiz: React.FC = function() {
         dispatch(setShowModal({showModal: true}));
         dispatch(setIsTesting({isTesting: false}));
     };
+	if (quizAnswersRef.current) {
+		console.log('fontSize: ', quizAnswersRef.current);
+		// const fontSize = getComputedStyle(quizAnswersRef.current)
+		// 	.getPropertyValue('font-size');
+	}
+
 	console.log("render Quiz");
 
 	return (<>
+		<div ref={quizAnswersRef}></div>
         {status === "loading" && <Preloader />}
         {status === "success" && 
         <>
             <div className={styles.header}>
-                <Container>
-                    <div className={styles.title}>
-                        {title}
-                    </div>
-                    <Questionline />
-                </Container>
+				<ComponentWithDimensions fn={setPaddingTop}>
+					<Container>
+						<div className={styles.title}>
+							{title}
+						</div>
+						<Questionline />
+					</Container>
+				</ComponentWithDimensions>
             </div>
-            <Container className={styles.quiz}>
+            <Container  className={styles.quiz} style={{paddingTop: `calc(3.415rem + ${paddingTop}px)`}} ref={quizAnswersRef}>
                 {[...Array(10)].map((item, index) => 
                     <Element 
                         key={"card" + (index + 1)}

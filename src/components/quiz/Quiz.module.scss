@@ -1,5 +1,6 @@
 .quiz {
-    padding-top: 8.125rem;
+	--quiz-padding: 8.125rem;
+    padding-top: var(--quiz-padding);
 }
 .header {
     position: fixed;

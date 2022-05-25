@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { RootState } from "../../store";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { ICard, setShowModal } from "../../store/mainSlice";
@@ -30,9 +31,11 @@ export const CheckTicket: React.FC = function () {
     // Получаем из стора состояние модального окна
     const showModal = useAppSelector(({ main: { quiz } }: RootState) => quiz.showModal);
 
-    if (showModal) {
-        document.body.style.overflow = 'hidden'
-    } else document.body.style.overflow = 'auto';
+	// Запрет прокрутки при открытиии модального окна и разрешение после закрытия
+	useEffect(() => {
+		if (showModal) document.body.style.overflow = 'hidden';
+		return () => {document.body.style.overflow = ''};
+	}, [showModal])
 
     // Подсчет количества правильных ответов
     const correctAnswerCount = ticket?.reduce((akk, card) => 
